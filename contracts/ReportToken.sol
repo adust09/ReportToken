@@ -19,8 +19,7 @@ contract ReportToken is ERC20 {
     return true;
   }
 
-  function withdraw(string memory userAddress) public {
-    address payable _to = parseAddr(userAddress);
-    _to.transfer(1000000000000000000);
+  function withdraw(address payable userAddress) external {
+    userAddress.transfer(1000000000000000000);
   }
 }
