@@ -87,11 +87,7 @@
             </h2>
             <!-- 非同期処理をしなきゃいけない。ロードを数秒間入れるとか... -->
             <div class="display-hash" v-if="ipfsHash != ''">
-              <p>共有されたレポートのハッシュ値は{{ ipfsHash }}です!</p>
-              <a :href="`https://ipfs.io/ipfs/${ipfsHash}`" target="brank"
-                >レポートはこちら</a
-              >
-              <iframe :src="`https://ipfs.io/ipfs/${ipfsHash}`" alt="共有したレポートの画像" width="100%" height="100%"></iframe>
+              <iframe :src="`https://ipfs.io/ipfs/${ipfsHash}`" alt="共有したレポートの画像" width="100%" height="100vh" class="iframe-report"></iframe>
               <div class="home-btn">
                 <el-button type="primary">
                   <nuxt-link to="/homePage" class="link-detail"
@@ -277,6 +273,10 @@ export default {
 
 .next-step_btn {
   text-align: center;
+}
+
+.iframe-report{
+  height: 100vh;
 }
 
 .upload-contents {

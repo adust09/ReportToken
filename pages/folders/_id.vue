@@ -17,7 +17,7 @@
             >レポートを見る</el-button
           >
           <div class="" v-if="reportHash != null">
-            <iframe :src="`https://ipfs.io/ipfs/${reportHash}`" alt="共有したレポートの画像" width="95%" style="height:100vh"></iframe>
+            <iframe :src="`https://ipfs.io/ipfs/${reportHash}`" alt="共有したレポートの画像" width="75%" style="height:1200px"></iframe>
           </div>
         </div>
       </div>

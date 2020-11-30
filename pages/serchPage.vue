@@ -9,7 +9,7 @@
             v-model="input"
             class="serch-input"
           >
-            <el-button slot="append" icon="el-icon-search" @click="getReport"></el-button>
+            <el-button slot="append" style="" icon="el-icon-search" @click="getReport"></el-button>
           </el-input>
           <div class="result-search" v-if="searchWord != null">
             <h3 v-if="count == 0">Oops! {{searchWord}}の検索結果は0でした。<br>あなたが最初の共有者になりませんか？</h3>
@@ -69,7 +69,8 @@ export default {
   text-align: center;
 }
 .serch-input {
-  padding: 10px;
+  margin-right: 0;
+  padding: 0px;
   padding-top: 10px;
   width: 400px;
 }
