@@ -67,16 +67,16 @@
             <p>大学名:{{ this.ruleForm.university }}</p>
             <p>学年:{{ this.ruleForm.grade }}</p>
             <p>レポートの詳細:{{ this.ruleForm.detail }}</p>
-            <el-popconfirm
+            <!-- <el-popconfirm
               @onConfirm="reportUpload"
               confirmButtonText="確認"
               cancelButtonText="キャンセル"
               icon="el-icon-info"
               iconColor="red"
               title="本アプリはユーザー様に生じた損害について、本アプリの故意または重大な過失を原因とする場合を除いて、一切の責任を負いません。"
-            >
-              <el-button slot="reference">レポートを共有</el-button>
-            </el-popconfirm>
+            > -->
+              <el-button slot="reference" @click="reportUpload">レポートを共有</el-button>
+            <!-- </el-popconfirm> -->
             <el-button style="margin-top: 12px" @click="back">戻る</el-button>
           </div>
           <div class="finish-contents" v-if="this.active == 3">
@@ -91,11 +91,7 @@
               <a :href="`https://ipfs.io/ipfs/${ipfsHash}`" target="brank"
                 >レポートはこちら</a
               >
-              <img
-                :src="`https://ipfs.io/ipfs/${ipfsHash}`"
-                alt="共有したレポートの画像"
-                style="width: 20vw"
-              />
+              <iframe :src="`https://ipfs.io/ipfs/${ipfsHash}`" alt="共有したレポートの画像" width="100%" height="100%"></iframe>
               <div class="home-btn">
                 <el-button type="primary">
                   <nuxt-link to="/homePage" class="link-detail"
@@ -187,13 +183,16 @@ export default {
     },
     async reportUpload() {
       //   IPFSにアップロード
+      console.log("success")
       await ipfs.add(this.setBuffer).then((value) => {
         this.ipfsHash = value.path;
       });
+      console.log(this.ipfsHash)
       let ret = await this.$reportInfoContract.methods
         .setReport(this.ipfsHash)
         .send({ from: this.userAddress });
       //   firestoreにレポートの情報を追加する
+      console.log(ret)
       await db
         .collection("users")
         .doc(this.userAddress)
