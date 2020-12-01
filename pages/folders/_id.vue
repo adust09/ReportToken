@@ -5,8 +5,6 @@
     <div class="main-contents">
       <div class="main-content">
         <h1>レポート情報</h1>
-        <p>{{ shareUserAddress }}</p>
-        <p>レポートの識別子は{{ reportIndex }}</p>
         <div class="report-info">
           <Filecard :report="report" />
           <div class="report-table_info"></div>
@@ -19,15 +17,7 @@
             >レポートを見る</el-button
           >
           <div class="" v-if="reportHash != null">
-            <h1>{{ reportHash }}</h1>
-            <a :href="`https://ipfs.io/ipfs/${reportHash}`" target="brank"
-              >レポートはこちら</a
-            >
-            <img
-              :src="`https://ipfs.io/ipfs/${reportHash}`"
-              alt="共有したレポートの画像"
-              style="width: 20vw"
-            />
+            <iframe :src="`https://ipfs.io/ipfs/${reportHash}`" alt="共有したレポートの画像" width="75%" style="height:1200px"></iframe>
           </div>
         </div>
       </div>
