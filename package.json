@@ -15,6 +15,7 @@
     "@types/ethereum-protocol": "^1.0.1",
     "@types/web3": "^1.2.2",
     "dns": "^0.2.2",
+    "dotenv": "^8.2.0",
     "element-ui": "^2.13.2",
     "express": "^4.17.1",
     "firebase": "^7.21.1",
