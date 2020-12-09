@@ -2,7 +2,6 @@ import Web3 from "web3"
 import reportTokenABI from "~~/build/contracts/ReportToken.json"
 import reportInfoABI from "~~/build/contracts/ReportInfo.json"
 
-
 export default async function (context, inject) {
   let web3
 
@@ -24,8 +23,7 @@ export default async function (context, inject) {
     reportTokenABI.abi,
     reportTokenABI.networks[networkId].address,
   )
-  let reporTokenAddress =  reportTokenABI.networks[networkId].address;
-
+  let reportTokenAddress =  reportTokenABI.networks[networkId].address;
 
   let reportInfoContract = new web3.eth.Contract(
     reportInfoABI.abi,
@@ -33,7 +31,7 @@ export default async function (context, inject) {
   )
 
   inject('web3', web3)
-  inject('reporTokenAddress', reporTokenAddress)
+  inject('reportTokenAddress', reportTokenAddress)
   inject('reportTokenContract', reportTokenContract)
   inject('reportInfoContract', reportInfoContract)
 }
