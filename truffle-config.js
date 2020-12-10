@@ -32,12 +32,12 @@ const ROPSTEN_URL = process.env.ROPSTEN_URL
 module.exports = {
   networks: {
 
-    // ganache: {
-    //   host: "127.0.0.1",     // Localhost (default: none)
-    //   port: 7545,            // Standard Ethereum port (default: none)
-    //   gas: 6700000,
-    //   network_id: "5777",       // Any network (default: none)
-    // },
+    ganache: {
+      host: "127.0.0.1",     // Localhost (default: none)
+      port: 7545,            // Standard Ethereum port (default: none)
+      gas: 6700000,
+      network_id: "5777",       // Any network (default: none)
+    },
 
     // Another network with more advanced options...
     // advanced: {
