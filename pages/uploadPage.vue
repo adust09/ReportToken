@@ -90,7 +90,7 @@
               <iframe :src="`https://ipfs.io/ipfs/${ipfsHash}`" alt="共有したレポートの画像" width="100%" height="100vh" class="iframe-report"></iframe>
               <div class="home-btn">
                 <el-button type="primary">
-                  <nuxt-link to="/homePage" class="link-detail"
+                  <nuxt-link to="/" class="link-detail"
                     >HOMEへ</nuxt-link
                   >
                 </el-button>

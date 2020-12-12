@@ -5,7 +5,7 @@
     <div class="reward-content" v-if="isWinner == true">
       <h3>ご褒美を受け取ってください</h3>
       <el-button style="text-align: center" @click="reward"
-        >テスト用のボタン</el-button
+        >受け取りボタン</el-button
       >
     </div>
     <div class="main-contents">
@@ -25,13 +25,12 @@
           <el-avatar
             src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
           ></el-avatar>
-          <p>{{ userAddress }}</p>
         </div>
         <h3>
-          <p>ownAmount: {{ ownAmount }} RPT</p>
+          <p>あなたのレポートークン: {{ ownAmount /100000000000}} RPT</p>
         </h3>
         <div class="wallet_btn">
-          <el-button type="primary" @click="dialog = true">購入する</el-button>
+          <el-button type="primary" @click="dialog = true">トークンを購入する</el-button>
           <el-drawer
             title="トークンの購入量を指定してください"
             :before-close="handleClose"
@@ -148,7 +147,7 @@ export default {
     },
     async purchaseToken() {
       let decimals = await this.$web3.utils.toBN(18);
-      this.amount = await this.$web3.utils.toBN(this.form.amount);
+      this.amount = await this.$web3.utils.toBN(this.form.amount*100000000000);
       this.sendValue = await this.amount.valueOf(
         this.$web3.utils.toBN(10).pow(decimals)
       );
@@ -163,6 +162,9 @@ export default {
         .balanceOf(this.userAddress)
         .call();
       //TODO: firestoreにpurchased_token_amountを加算する
+      await db.collection("users").doc(this.userAddress).update({
+        purchased_token_amount: firebase.firestore.FieldValue.increment(this.form.amount),
+      })
     },
   },
   async mounted() {
